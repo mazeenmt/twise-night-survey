@@ -11,7 +11,9 @@ feedback1= [i for i in feedback]
 feedback1.append('it was very bad')
 
 results = sentiment_pipeline(feedback1)
-print(results)
+
+def return_result():
+    return results
 
 scores = [-x['score'] if x['label']=='negative' else x['score'] for x in results]
 mean = sum(scores) / len(scores)

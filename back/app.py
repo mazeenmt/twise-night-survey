@@ -1,5 +1,6 @@
 from flask import Flask, jsonify
 from flask_cors import CORS 
+from model import return_result
 import pandas as pd
 import datetime
 
@@ -9,50 +10,49 @@ CORS(app)
 # Load the dataset
 
 df = pd.read_csv('../data.csv')
-print(df.columns)
-
-result = [
-    {"label": "positive", "score": 0.8},
-    {"label": "negative", "score": 0.1},
-    {"label": "neutral", "score": 0.1},
-    {"label": "positive", "score": 0.9},
-    {"label": "negative", "score": 0.2},
-    {"label": "neutral", "score": 0.6},
-    {"label": "positive", "score": 0.8},
-    {"label": "negative", "score": 0.1},
-    {"label": "neutral", "score": 0.1},
-    {"label": "positive", "score": 0.9},
-    {"label": "negative", "score": 0.2},
-    {"label": "neutral", "score": 0.6},
-    {"label": "positive", "score": 0.8},
-    {"label": "negative", "score": 0.1},
-    {"label": "neutral", "score": 0.1},
-    {"label": "positive", "score": 0.9},
-    {"label": "negative", "score": 0.2},
-    {"label": "neutral", "score": 0.6},
-    {"label": "positive", "score": 0.8},
-    {"label": "negative", "score": 0.1},
-    {"label": "neutral", "score": 0.1},
-    {"label": "positive", "score": 0.9},
-    {"label": "negative", "score": 0.2},
-    {"label": "neutral", "score": 0.6},
-    {"label": "positive", "score": 0.8},
-    {"label": "negative", "score": 0.1},
-    {"label": "neutral", "score": 0.1},
-    {"label": "positive", "score": 0.9},
-    {"label": "negative", "score": 0.2},
-    {"label": "neutral", "score": 0.6},
-    {"label": "positive", "score": 0.8},
-    {"label": "negative", "score": 0.1},
-    {"label": "neutral", "score": 0.1},
-    {"label": "positive", "score": 0.9},
-    {"label": "negative", "score": 0.2},
-    {"label": "neutral", "score": 0.6},
-    {"label": "positive", "score": 0.8},
-    {"label": "negative", "score": 0.1},
-    {"label": "neutral", "score": 0.1},
-    {"label": "positive", "score": 0.9},
-]   
+result = return_result()
+# result = [
+#     {"label": "positive", "score": 0.8},
+#     {"label": "negative", "score": 0.1},
+#     {"label": "neutral", "score": 0.1},
+#     {"label": "positive", "score": 0.9},
+#     {"label": "negative", "score": 0.2},
+#     {"label": "neutral", "score": 0.6},
+#     {"label": "positive", "score": 0.8},
+#     {"label": "negative", "score": 0.1},
+#     {"label": "neutral", "score": 0.1},
+#     {"label": "positive", "score": 0.9},
+#     {"label": "negative", "score": 0.2},
+#     {"label": "neutral", "score": 0.6},
+#     {"label": "positive", "score": 0.8},
+#     {"label": "negative", "score": 0.1},
+#     {"label": "neutral", "score": 0.1},
+#     {"label": "positive", "score": 0.9},
+#     {"label": "negative", "score": 0.2},
+#     {"label": "neutral", "score": 0.6},
+#     {"label": "positive", "score": 0.8},
+#     {"label": "negative", "score": 0.1},
+#     {"label": "neutral", "score": 0.1},
+#     {"label": "positive", "score": 0.9},
+#     {"label": "negative", "score": 0.2},
+#     {"label": "neutral", "score": 0.6},
+#     {"label": "positive", "score": 0.8},
+#     {"label": "negative", "score": 0.1},
+#     {"label": "neutral", "score": 0.1},
+#     {"label": "positive", "score": 0.9},
+#     {"label": "negative", "score": 0.2},
+#     {"label": "neutral", "score": 0.6},
+#     {"label": "positive", "score": 0.8},
+#     {"label": "negative", "score": 0.1},
+#     {"label": "neutral", "score": 0.1},
+#     {"label": "positive", "score": 0.9},
+#     {"label": "negative", "score": 0.2},
+#     {"label": "neutral", "score": 0.6},
+#     {"label": "positive", "score": 0.8},
+#     {"label": "negative", "score": 0.1},
+#     {"label": "neutral", "score": 0.1},
+#     {"label": "positive", "score": 0.9},
+# ]   
 
 df['label'] = [r['label'] for r in result]
 df['score'] = [r['score'] for r in result]
