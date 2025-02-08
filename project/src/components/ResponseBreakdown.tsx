@@ -8,11 +8,9 @@ interface Props {
 
 export const ResponseBreakdown: React.FC<Props> = ({ data, total }) => {
   const categories = [
-    { key: 'verySatisfied', label: 'Very Satisfied', color: 'from-green-500 to-green-400' },
     { key: 'satisfied', label: 'Satisfied', color: 'from-green-400 to-green-300' },
     { key: 'neutral', label: 'Neutral', color: 'from-yellow-400 to-yellow-300' },
     { key: 'dissatisfied', label: 'Dissatisfied', color: 'from-red-400 to-red-300' },
-    { key: 'veryDissatisfied', label: 'Very Dissatisfied', color: 'from-red-500 to-red-400' },
   ];
 
   return (

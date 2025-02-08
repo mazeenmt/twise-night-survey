@@ -91,10 +91,7 @@ function App() {
                 total={data.totalResponses}
               />
             </div>
-            <div className="lg:col-span-2">
-              <TrendChart data={data.trendData} />
-            </div>
-            <div className="lg:col-span-1">
+            <div className="lg:col-span-3">
               <Comments comments={data.recentComments} />
             </div>
           </div>

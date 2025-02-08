@@ -65,14 +65,6 @@ export const ActivitySatisfaction: React.FC<Props> = ({ activities }) => {
               {/* Activity Details */}
               <div className="space-y-3">
                 <div className="flex items-center text-sm">
-                  <Users className="w-4 h-4 mr-2 text-gray-500" />
-                  <span>{activity.participantCount} participants</span>
-                </div>
-                <div className="flex items-center text-sm">
-                  <Clock className="w-4 h-4 mr-2 text-gray-500" />
-                  <span>{activity.duration}</span>
-                </div>
-                <div className="flex items-center text-sm">
                   <BarChart className="w-4 h-4 mr-2 text-gray-500" />
                   <span>{activity.engagement}% engagement</span>
                 </div>

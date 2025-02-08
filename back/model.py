@@ -15,4 +15,4 @@ print(results)
 
 scores = [-x['score'] if x['label']=='negative' else x['score'] for x in results]
 mean = sum(scores) / len(scores)
-mean*100
+print(mean*100)

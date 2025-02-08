@@ -26,9 +26,6 @@ export const Comments: React.FC<Props> = ({ comments }) => {
             }`}
           >
             <p className="text-gray-800">{comment.comment}</p>
-            <p className="text-sm text-gray-500 mt-2">
-              {new Date(comment.timestamp).toLocaleTimeString()}
-            </p>
           </div>
         ))}
       </div>

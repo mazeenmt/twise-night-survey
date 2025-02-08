@@ -1,21 +1,41 @@
-customer_id,activity_name,review_text
-CUST1001,Skydiving Adventure,"Absolutely thrilling experience! The instructors were professional, and the views were breathtaking. Highly recommend!"
-CUST1002,Wine Tasting Tour,"A delightful afternoon sampling local wines. The guide was knowledgeable, and the vineyard was stunning."
-CUST1003,Hot Air Balloon Ride,"A serene and magical experience. Floating above the landscape at sunrise was unforgettable."
-CUST1004,Cooking Class,"Such a fun and educational activity! Learned new recipes and enjoyed a delicious meal afterward."
-CUST1005,Scuba Diving,"An underwater paradise! The coral reefs were vibrant, and the marine life was incredible."
-CUST1006,Hiking Expedition,"Challenging but rewarding. The trails were well-marked, and the scenery was breathtaking."
-CUST1007,Art Workshop,"A creative escape! The instructor was inspiring, and I left with a piece of art I’m proud of."
-CUST1008,Wildlife Safari,"An unforgettable adventure! Saw so many animals in their natural habitat. The guides were fantastic."
-CUST1009,Kayaking Tour,"Relaxing and fun! Paddling through the calm waters was a great way to connect with nature."
-CUST1010,Escape Room Challenge,"A brain-teasing blast! Our team had so much fun solving the puzzles together."
-CUST1011,Yoga Retreat,"A peaceful and rejuvenating experience. The instructor was amazing, and the setting was tranquil."
-CUST1012,City Bike Tour,"A great way to explore the city! Learned a lot about the history and culture while staying active."
-CUST1013,Pottery Class,"So therapeutic! Loved getting my hands dirty and creating something unique."
-CUST1014,Ziplining Adventure,"An adrenaline rush! The course was well-maintained, and the staff ensured our safety."
-CUST1015,Food Truck Festival,"A foodie’s dream! Tried so many delicious dishes from different cuisines."
-CUST1016,Stand-Up Paddleboarding,"A fun and relaxing way to spend the day on the water. Perfect for beginners!"
-CUST1017,Photography Workshop,"Learned so much about composition and lighting. The instructor was patient and skilled."
-CUST1018,Surfing Lessons,"Challenging but so much fun! The instructors were supportive, and I caught my first wave."
-CUST1019,Stargazing Night,"A mesmerizing experience. The telescope provided clear views of the stars and planets."
-CUST1020,Historical Walking Tour,"Fascinating and informative! The guide brought the city’s history to life."
+customer_id,activity_name,review_text,most_praised_aspects,areas_for_improvement
+CUST1001,Skydiving Adventure,"Absolutely thrilling experience! The instructors were professional; and the views were breathtaking. Highly recommend!",Instructors, views,None mentioned
+CUST1002,Wine Tasting Tour,"A delightful afternoon sampling local wines. The guide was knowledgeable, and the vineyard was stunning.",Guide, vineyard,None mentioned
+CUST1003,Hot Air Balloon Ride,"A serene and magical experience. Floating above the landscape at sunrise was unforgettable.",Scenery, experience,None mentioned
+CUST1004,Cooking Class,"Such a fun and educational activity! Learned new recipes and enjoyed a delicious meal afterward.",Recipes, meal,None mentioned
+CUST1005,Scuba Diving,"An underwater paradise! The coral reefs were vibrant, and the marine life was incredible.",Coral reefs, marine life,None mentioned
+CUST1006,Hiking Expedition,"Challenging but rewarding. The trails were well-marked, and the scenery was breathtaking.",Trails, scenery,None mentioned
+CUST1007,Art Workshop,"A creative escape! The instructor was inspiring, and I left with a piece of art I’m proud of.",Instructor, creativity,None mentioned
+CUST1008,Wildlife Safari,"An unforgettable adventure! Saw so many animals in their natural habitat. The guides were fantastic.",Animals, guides,None mentioned
+CUST1009,Kayaking Tour,"Relaxing and fun! Paddling through the calm waters was a great way to connect with nature.",Calm waters, nature,None mentioned
+CUST1010,Escape Room Challenge,"A brain-teasing blast! Our team had so much fun solving the puzzles together.",Puzzles, teamwork,None mentioned
+CUST1011,Yoga Retreat,"A peaceful and rejuvenating experience. The instructor was amazing, and the setting was tranquil.",Instructor, setting,None mentioned
+CUST1012,City Bike Tour,"A great way to explore the city! Learned a lot about the history and culture while staying active.",History, culture,None mentioned
+CUST1013,Pottery Class,"So therapeutic! Loved getting my hands dirty and creating something unique.",Creativity, therapeutic aspect,None mentioned
+CUST1014,Ziplining Adventure,"An adrenaline rush! The course was well-maintained, and the staff ensured our safety.",Course, safety,None mentioned
+CUST1015,Food Truck Festival,"A foodie’s dream! Tried so many delicious dishes from different cuisines.",Variety of dishes,None mentioned
+CUST1016,Stand-Up Paddleboarding,"A fun and relaxing way to spend the day on the water. Perfect for beginners!",Relaxation, beginner-friendly,None mentioned
+CUST1017,Photography Workshop,"Learned so much about composition and lighting. The instructor was patient and skilled.",Instructor, learning experience,None mentioned
+CUST1018,Surfing Lessons,"Challenging but so much fun! The instructors were supportive, and I caught my first wave.",Instructors, achievement,None mentioned
+CUST1019,Stargazing Night,"A mesmerizing experience. The telescope provided clear views of the stars and planets.",Telescope, views,None mentioned
+CUST1020,Historical Walking Tour,"Fascinating and informative! The guide brought the city’s history to life.",Guide, historical insights,None mentioned
+CUST1021,Skydiving Adventure,"The experience was okay, but the equipment felt outdated, and the wait time was too long.",None mentioned,Outdated equipment, long wait times
+CUST1022,Wine Tasting Tour,"The wines were good, but the tour felt rushed, and the guide wasn’t very engaging.",Wines,Rushed tour, unengaging guide
+CUST1023,Hot Air Balloon Ride,"The ride was canceled last minute due to weather, and the rescheduling process was frustrating.",None mentioned,Poor communication, cancellation issues
+CUST1024,Cooking Class,"The class was overcrowded, and it was hard to hear the instructor. The recipes were too basic.",None mentioned,Overcrowded, poor instruction
+CUST1025,Scuba Diving,"The gear was poorly maintained, and the dive spots were overcrowded with other tourists.",None mentioned,Poorly maintained gear, overcrowded spots
+CUST1026,Hiking Expedition,"The trail was poorly marked, and the guide seemed inexperienced.",None mentioned,Poorly marked trail, inexperienced guide
+CUST1027,Art Workshop,"The materials provided were low quality, and the instructor was unhelpful.",None mentioned,Low-quality materials, unhelpful instructor
+CUST1028,Wildlife Safari,"We barely saw any animals, and the vehicle broke down halfway through the tour.",None mentioned,Few animals, vehicle issues
+CUST1029,Kayaking Tour,"The kayaks were old and uncomfortable, and the tour felt disorganized.",None mentioned,Uncomfortable kayaks, disorganization
+CUST1030,Escape Room Challenge,"The puzzles were too easy, and the room was poorly decorated.",None mentioned,Easy puzzles, poor decor
+CUST1031,Yoga Retreat,"The instructor was late, and the retreat was overpriced for what was offered.",None mentioned,Instructor tardiness, overpriced
+CUST1032,City Bike Tour,"The bikes were in poor condition, and the tour route was boring.",None mentioned,Poor bike condition, boring route
+CUST1033,Pottery Class,"The class was too short, and the instructor didn’t provide enough individual attention.",None mentioned,Short duration, lack of attention
+CUST1034,Ziplining Adventure,"The safety briefing was unclear, and the staff seemed unprofessional.",None mentioned,Unclear safety briefing, unprofessional staff
+CUST1035,Food Truck Festival,"The lines were too long, and some of the food was cold by the time we got it.",None mentioned,Long lines, cold food
+CUST1036,Stand-Up Paddleboarding,"The boards were unstable, and the instructor didn’t explain the basics well.",None mentioned,Unstable boards, poor instruction
+CUST1037,Photography Workshop,"The workshop was too advanced for beginners, and the instructor was impatient.",None mentioned,Not beginner-friendly, impatient instructor
+CUST1038,Surfing Lessons,"The waves were too rough for beginners, and the instructor didn’t provide enough support.",None mentioned,Rough waves, lack of support
+CUST1039,Stargazing Night,"The telescope was out of focus, and the guide didn’t explain much about the stars.",None mentioned,Out-of-focus telescope, lack of explanation
+CUST1040,Historical Walking Tour,"The guide was hard to understand, and the tour felt rushed.",None mentioned,Unclear guide, rushed tour

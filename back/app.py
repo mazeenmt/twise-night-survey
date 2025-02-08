@@ -1,10 +1,15 @@
 from flask import Flask, jsonify
-from flask_cors import CORS
-import random
+from flask_cors import CORS 
+import pandas as pd
 import datetime
 
 app = Flask(__name__)
 CORS(app)
+
+# Load the dataset
+
+df = pd.read_csv('../data.csv')
+print(df.columns)
 
 result = [
     {"label": "positive", "score": 0.8},
@@ -12,81 +17,128 @@ result = [
     {"label": "neutral", "score": 0.1},
     {"label": "positive", "score": 0.9},
     {"label": "negative", "score": 0.2},
-    {"label": "neutral", "score": 0.6}
-]
+    {"label": "neutral", "score": 0.6},
+    {"label": "positive", "score": 0.8},
+    {"label": "negative", "score": 0.1},
+    {"label": "neutral", "score": 0.1},
+    {"label": "positive", "score": 0.9},
+    {"label": "negative", "score": 0.2},
+    {"label": "neutral", "score": 0.6},
+    {"label": "positive", "score": 0.8},
+    {"label": "negative", "score": 0.1},
+    {"label": "neutral", "score": 0.1},
+    {"label": "positive", "score": 0.9},
+    {"label": "negative", "score": 0.2},
+    {"label": "neutral", "score": 0.6},
+    {"label": "positive", "score": 0.8},
+    {"label": "negative", "score": 0.1},
+    {"label": "neutral", "score": 0.1},
+    {"label": "positive", "score": 0.9},
+    {"label": "negative", "score": 0.2},
+    {"label": "neutral", "score": 0.6},
+    {"label": "positive", "score": 0.8},
+    {"label": "negative", "score": 0.1},
+    {"label": "neutral", "score": 0.1},
+    {"label": "positive", "score": 0.9},
+    {"label": "negative", "score": 0.2},
+    {"label": "neutral", "score": 0.6},
+    {"label": "positive", "score": 0.8},
+    {"label": "negative", "score": 0.1},
+    {"label": "neutral", "score": 0.1},
+    {"label": "positive", "score": 0.9},
+    {"label": "negative", "score": 0.2},
+    {"label": "neutral", "score": 0.6},
+    {"label": "positive", "score": 0.8},
+    {"label": "negative", "score": 0.1},
+    {"label": "neutral", "score": 0.1},
+    {"label": "positive", "score": 0.9},
+]   
 
-def process_satisfaction_data(result):
-    total_responses = len(result)
-    positive = sum(1 for r in result if r["label"] == "positive")
-    negative = sum(1 for r in result if r["label"] == "negative")
-    neutral = sum(1 for r in result if r["label"] == "neutral")
+df['label'] = [r['label'] for r in result]
+df['score'] = [r['score'] for r in result]
 
+def process_satisfaction_data():
+    # Total responses and counts per sentiment label.
+    total_responses = len(df)
+    positive = df[df['label'] == 'positive'].shape[0]
+    negative = df[df['label'] == 'negative'].shape[0]
+    neutral = df[df['label'] == 'neutral'].shape[0]
+    print(positive)
+    overall_satisfaction = round((positive / total_responses) * 100) if total_responses > 0 else 0
+
+
+    # --- Top Praised Aspects ---
+    aspects_series = df['most_praised_aspects'].dropna().apply(lambda x: [a.strip() for a in x.split(',')])
+    all_aspects = [aspect for sublist in aspects_series for aspect in sublist]
+    aspects_count = {}
+    for aspect in all_aspects:
+        aspects_count[aspect] = aspects_count.get(aspect, 0) + 1
+    # Sort by frequency (highest first)
+    top_aspects = sorted(aspects_count.items(), key=lambda x: x[1], reverse=True)
+    topPraisedAspects = [{"aspect": aspect.title(), "score": count} for aspect, count in top_aspects[:4]]
+
+    # --- Areas for Improvement ---
+    improvements_series = df['areas_for_improvement'].dropna().apply(lambda x: [i.strip() for i in x.split(',')])
+    all_improvements = [impr for sublist in improvements_series for impr in sublist]
+    improvements_count = {}
+    for impr in all_improvements:
+        if impr != "None mentioned":
+            improvements_count[impr] = improvements_count.get(impr, 0) + 1
+    top_improvements = sorted(improvements_count.items(), key=lambda x: x[1], reverse=True)
+    improvements = [{"aspect": impr.title(), "count": count} for impr, count in top_improvements[:4]]
+
+
+    # --- Recent Comments ---
+    # Take the last 3 reviews 
+    recentComments = []
+    for _, row in df.iterrows():
+        if row['review_text'] != "None mentioned":
+            recentComments.append({
+                "id": str(row[0]),
+                "comment": row[1],
+                "sentiment": row['label'],
+                "timestamp": datetime.datetime.utcnow().isoformat()
+            })
+        if len(recentComments)==3:
+            break
+
+    # --- Activities ---
+    # Group by activity_name and compute the number of participants and average sentiment.
+    activity_groups = df.groupby('customer_id').agg(
+        participantCount=('customer_id', 'count'),
+        averageSentiment=('score', 'mean')
+    ).reset_index()
+    
+    activities_list = []
+    for idx, row in activity_groups.iterrows():
+        activities_list.append({
+            "id": str(idx + 1),
+            "name": row['customer_id'],
+            "satisfaction": round(row['averageSentiment'] * 100),
+            "participantCount": int(row['participantCount']),
+            "engagement": round(row['averageSentiment'] * 100)  
+        })
+
+    # Build and return the complete result object.
     return {
-        "eventTitle": "TechConf 2025",
+        "eventTitle": "CPU Team Survey 2025",
         "lastUpdated": datetime.datetime.utcnow().isoformat(),
-        "overallSatisfaction": round((positive / total_responses) * 100),
+        "overallSatisfaction": overall_satisfaction,
         "totalResponses": total_responses,
         "responseBreakdown": {
-            "verySatisfied": positive * random.randint(1, 3),
-            "satisfied": neutral * random.randint(1, 3),
-            "neutral": neutral,
-            "dissatisfied": negative * random.randint(1, 2),
-            "veryDissatisfied": negative
+            "satisfied": int(positive),
+            "neutral": int(neutral),
+            "dissatisfied": int(negative)
         },
-        "topPraisedAspects": [
-            {"aspect": "Speaker Quality", "score": round(random.uniform(8, 10), 1)},
-            {"aspect": "Venue", "score": round(random.uniform(7, 9), 1)},
-            {"aspect": "Content", "score": round(random.uniform(8, 10), 1)},
-            {"aspect": "Networking", "score": round(random.uniform(7, 9), 1)}
-        ],
-        "improvements": [
-            {"aspect": "Session Length", "count": random.randint(10, 50)},
-            {"aspect": "Break Duration", "count": random.randint(5, 40)},
-            {"aspect": "Wi-Fi Speed", "count": random.randint(5, 30)}
-        ],
-        "trendData": [
-            {
-                "date": (datetime.datetime.utcnow() - datetime.timedelta(days=i)).strftime("%Y-%m-%d"),
-                "satisfaction": random.randint(70, 100)
-            }
-            for i in range(7)
-        ],
-        "recentComments": [
-            {
-                "id": str(i + 1),
-                "comment": random.choice(
-                    [
-                        "Amazing speakers and great insights!",
-                        "The networking sessions were very productive",
-                        "Wi-Fi could be better",
-                        "Venue was fantastic!",
-                        "Too many long sessions in one day"
-                    ]
-                ),
-                "sentiment": random.choice(["positive", "neutral", "negative"]),
-                "timestamp": (datetime.datetime.utcnow() - datetime.timedelta(minutes=random.randint(1, 60))).isoformat()
-            }
-            for i in range(3)
-        ],
-        "activities": [
-            {
-                "id": str(i + 1),
-                "name": random.choice(
-                    ["Keynote Speech", "Workshop: AI Future", "Networking Lunch", "Panel Discussion", "Hands-on Lab"]
-                ),
-                "satisfaction": random.randint(75, 95),
-                "participantCount": random.randint(80, 500),
-                "duration": f"{random.randint(1, 3)}h",
-                "category": random.choice(["Presentation", "Workshop", "Networking", "Discussion"]),
-                "engagement": random.randint(80, 98)
-            }
-            for i in range(5)
-        ]
+        "topPraisedAspects": topPraisedAspects,
+        "improvements": improvements,
+        "recentComments": recentComments,
+        "activities": activities_list
     }
 
 @app.route("/api/satisfaction", methods=["GET"])
 def get_satisfaction_data():
-    data = process_satisfaction_data(result)
+    data = process_satisfaction_data()
     return jsonify(data)
 
 if __name__ == "__main__":
