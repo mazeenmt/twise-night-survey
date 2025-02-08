@@ -32,7 +32,7 @@ L'objectif est de **fournir un aperçu instantané** de l'événement pour mieux
 
 ## 📸 Démo  
 ### **Vidéo de démonstration**  
-[![Watch the demo]](Nuit-des-Chercheurs-CPU-Team.mp4)  
+[![Download the demo]](Nuit-des-Chercheurs-CPU-Team.mp4)  
 
 ---
 
